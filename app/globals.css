@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia,
+    "Times New Roman", serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  /* Parchment / ink palette */
+  --color-parchment: #f7f1e3;
+  --color-parchment-deep: #efe6d2;
+  --color-ink: #2a2118;
+  --color-ink-soft: #5a4f40;
+
+  /* Indian accents: marigold saffron + peacock indigo */
+  --color-marigold: #e8772e;
+  --color-marigold-deep: #c75d18;
+  --color-peacock: #1f6f78;
+  --color-peacock-deep: #14515a;
+  --color-rose: #b3325a;
+}
+
+:root {
+  --bg: var(--color-parchment);
+  --bg-raised: #fffdf7;
+  --fg: var(--color-ink);
+  --fg-soft: var(--color-ink-soft);
+  --border: #e2d6bd;
+  --accent: var(--color-marigold-deep);
+  --accent-2: var(--color-peacock);
+}
+
+.dark {
+  --bg: #15120d;
+  --bg-raised: #1f1a12;
+  --fg: #ece3d2;
+  --fg-soft: #b3a892;
+  --border: #352c1f;
+  --accent: var(--color-marigold);
+  --accent-2: #38a3ad;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle paper texture using layered radial gradients */
+.paper {
+  background-image: radial-gradient(
+      circle at 20% 10%,
+      color-mix(in srgb, var(--accent) 5%, transparent),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      color-mix(in srgb, var(--accent-2) 6%, transparent),
+      transparent 45%
+    );
+}
+
+.reading {
+  font-family: var(--font-serif);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.35s ease-out both;
+}

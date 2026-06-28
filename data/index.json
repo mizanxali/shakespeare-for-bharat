@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "hamlet",
+    "name": "Hamlet",
+    "title": "Hamlet",
+    "category": "tragedy",
+    "actCount": 5,
+    "sceneCount": 20
+  },
+  {
+    "slug": "macbeth",
+    "name": "Macbeth",
+    "title": "Macbeth",
+    "category": "tragedy",
+    "actCount": 5,
+    "sceneCount": 28
+  },
+  {
+    "slug": "romeo_juliet",
+    "name": "Romeo and Juliet",
+    "title": "Romeo and Juliet",
+    "category": "tragedy",
+    "actCount": 5,
+    "sceneCount": 26
+  }
+]
