@@ -24,7 +24,9 @@ export function Speech({ block }: { block: SpeechBlock }) {
   const [playing, setPlaying] = useState<AudioKind | null>(null);
   const [loadingAudio, setLoadingAudio] = useState<AudioKind | null>(null);
 
-  const langLabel = getLanguage(language)?.label ?? "";
+  const lang = getLanguage(language);
+  const langLabel = lang?.label ?? "";
+  const canSpeakTranslation = lang?.tts ?? false;
 
   // When the target language changes, swap to its cached translation if we have
   // one, otherwise drop the now-stale translation from the previous language.
@@ -152,9 +154,11 @@ export function Speech({ block }: { block: SpeechBlock }) {
         <Btn onClick={() => handleListen("original")} loading={loadingAudio === "original"} active={playing === "original"}>
           {playing === "original" ? "⏸ English" : "🔊 English"}
         </Btn>
-        <Btn onClick={() => handleListen("translated")} loading={loadingAudio === "translated"} active={playing === "translated"}>
-          {playing === "translated" ? `⏸ ${langLabel}` : `🔊 ${langLabel}`}
-        </Btn>
+        {canSpeakTranslation && (
+          <Btn onClick={() => handleListen("translated")} loading={loadingAudio === "translated"} active={playing === "translated"}>
+            {playing === "translated" ? `⏸ ${langLabel}` : `🔊 ${langLabel}`}
+          </Btn>
+        )}
       </div>
     </div>
   );
