@@ -1,10 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import type { Scene } from "@/lib/plays";
 import { LanguageProvider } from "./language-context";
-import { LanguagePicker } from "./LanguagePicker";
+import { LanguageButton, LanguageDrawer } from "./LanguageDrawer";
 import { Speech } from "./Speech";
+import { VoiceProvider } from "./voice-context";
+import { CharacterVoices } from "./CharacterVoices";
 
 const roman = (n: number) =>
   ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"][n] ?? String(n);
@@ -18,6 +21,7 @@ export function Reader({
   act,
   prev,
   next,
+  characters,
 }: {
   playSlug: string;
   playName: string;
@@ -25,21 +29,43 @@ export function Reader({
   act: number;
   prev: NavTarget;
   next: NavTarget;
+  characters: string[];
 }) {
+  const [voicesOpen, setVoicesOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+
   return (
     <LanguageProvider>
-      {/* Sticky toolbar */}
-      <div className="sticky top-[57px] z-20 border-b border-[var(--border)] bg-[color-mix(in_srgb,var(--bg)_85%,transparent)] backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
-          <Link
-            href={`/play/${playSlug}`}
-            className="reading truncate text-sm font-semibold text-[var(--fg)] hover:text-[var(--accent)]"
-          >
-            {playName}
-          </Link>
-          <LanguagePicker />
+      <VoiceProvider slug={playSlug}>
+        {/* Sticky toolbar */}
+        <div className="sticky top-[57px] z-20 border-b border-[var(--border)] bg-[color-mix(in_srgb,var(--bg)_85%,transparent)] backdrop-blur">
+          <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
+            <Link
+              href={`/play/${playSlug}`}
+              className="reading truncate text-sm font-semibold text-[var(--fg)] hover:text-[var(--accent)]"
+            >
+              {playName}
+            </Link>
+            <div className="flex items-center gap-2">
+              <LanguageButton onOpen={() => setLangOpen(true)} />
+              <button
+                onClick={() => setVoicesOpen(true)}
+                className="flex items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-raised)] px-3 py-1.5 text-sm text-[var(--fg-soft)] outline-none transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              >
+                <span aria-hidden>🎭</span>
+                <span className="hidden sm:inline">Voices</span>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
+
+        <LanguageDrawer open={langOpen} onClose={() => setLangOpen(false)} />
+
+        <CharacterVoices
+          characters={characters}
+          open={voicesOpen}
+          onClose={() => setVoicesOpen(false)}
+        />
 
       <article className="mx-auto max-w-3xl px-5 py-10">
         <header className="mb-8 text-center">
@@ -94,7 +120,8 @@ export function Reader({
             <span />
           )}
         </nav>
-      </article>
+        </article>
+      </VoiceProvider>
     </LanguageProvider>
   );
 }

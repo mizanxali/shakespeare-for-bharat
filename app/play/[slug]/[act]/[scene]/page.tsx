@@ -56,6 +56,20 @@ export default async function ScenePage({
   const prev = idx > 0 ? seq[idx - 1] : null;
   const next = idx < seq.length - 1 ? seq[idx + 1] : null;
 
+  // Distinct speaking characters across the whole play, so the voice picker is
+  // consistent no matter which scene you're reading.
+  const characters = Array.from(
+    new Set(
+      play.acts.flatMap((a) =>
+        a.scenes.flatMap((s) =>
+          s.blocks.flatMap((b) =>
+            b.type === "speech" && b.speaker ? [b.speaker] : [],
+          ),
+        ),
+      ),
+    ),
+  ).sort();
+
   return (
     <Reader
       playSlug={play.slug}
@@ -64,6 +78,7 @@ export default async function ScenePage({
       scene={current}
       prev={prev}
       next={next}
+      characters={characters}
     />
   );
 }

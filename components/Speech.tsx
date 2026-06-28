@@ -4,11 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import type { SpeechBlock } from "@/lib/plays";
 import { getLanguage, ttsLanguageCode } from "@/lib/languages";
 import { useLanguage } from "./language-context";
+import { useVoice } from "./voice-context";
 
 type AudioKind = "original" | "translated";
 
 export function Speech({ block }: { block: SpeechBlock }) {
   const { language } = useLanguage();
+  const { getVoice } = useVoice();
   const original = block.lines.map((l) => l.text).join("\n");
 
   // Translations cached per language so switching back is instant.
@@ -91,7 +93,7 @@ export function Speech({ block }: { block: SpeechBlock }) {
       const res = await fetch("/api/tts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text, language: ttsLang }),
+        body: JSON.stringify({ text, language: ttsLang, speaker: getVoice(block.speaker) }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Speech failed");

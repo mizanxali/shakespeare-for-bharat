@@ -26,7 +26,7 @@ export default async function HomePage() {
           भारत · Bharat
         </p>
         <h1 className="reading mx-auto max-w-3xl text-4xl font-bold leading-tight text-[var(--fg)] sm:text-6xl">
-          Shakespeare, in the languages of India
+          Shakespeare, in the languages of India 🇮🇳
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--fg-soft)]">
           Read the immortal plays, then translate any speech into{" "}

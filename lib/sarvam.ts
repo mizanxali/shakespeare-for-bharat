@@ -71,12 +71,14 @@ export async function translate(
 export async function tts(
   text: string,
   targetLanguageCode: string,
+  speaker?: string,
 ): Promise<string[]> {
   const trimmed = text.slice(0, TTS_MAX_CHARS);
   const data = await call<{ audios: string[] }>("/text-to-speech", {
     text: trimmed,
     target_language_code: targetLanguageCode,
     model: "bulbul:v3",
+    ...(speaker ? { speaker } : {}),
   });
   return data.audios ?? [];
 }
