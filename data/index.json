@@ -1,11 +1,147 @@
 [
   {
+    "slug": "midsummer",
+    "name": "A Midsummer Night's Dream",
+    "title": "A Midsummer Night's Dream",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 9
+  },
+  {
+    "slug": "allswell",
+    "name": "All's Well That Ends Well",
+    "title": "All's Well That Ends Well",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 23
+  },
+  {
+    "slug": "cleopatra",
+    "name": "Antony and Cleopatra",
+    "title": "Antony and Cleopatra",
+    "category": "tragedy",
+    "actCount": 5,
+    "sceneCount": 42
+  },
+  {
+    "slug": "asyoulikeit",
+    "name": "As You Like It",
+    "title": "As You Like It",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 22
+  },
+  {
+    "slug": "coriolanus",
+    "name": "Coriolanus",
+    "title": "Coriolanus",
+    "category": "tragedy",
+    "actCount": 5,
+    "sceneCount": 29
+  },
+  {
+    "slug": "cymbeline",
+    "name": "Cymbeline",
+    "title": "Cymbeline",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 26
+  },
+  {
     "slug": "hamlet",
     "name": "Hamlet",
     "title": "Hamlet",
     "category": "tragedy",
     "actCount": 5,
     "sceneCount": 20
+  },
+  {
+    "slug": "1henryiv",
+    "name": "Henry IV, part 1",
+    "title": "Henry IV, part 1",
+    "category": "history",
+    "actCount": 5,
+    "sceneCount": 18
+  },
+  {
+    "slug": "2henryiv",
+    "name": "Henry IV, part 2",
+    "title": "Henry IV, part 2",
+    "category": "history",
+    "actCount": 6,
+    "sceneCount": 20
+  },
+  {
+    "slug": "henryv",
+    "name": "Henry V",
+    "title": "Henry V",
+    "category": "history",
+    "actCount": 5,
+    "sceneCount": 28
+  },
+  {
+    "slug": "1henryvi",
+    "name": "Henry VI, part 1",
+    "title": "Henry VI, part 1",
+    "category": "history",
+    "actCount": 5,
+    "sceneCount": 27
+  },
+  {
+    "slug": "2henryvi",
+    "name": "Henry VI, part 2",
+    "title": "Henry VI, part 2",
+    "category": "history",
+    "actCount": 5,
+    "sceneCount": 24
+  },
+  {
+    "slug": "3henryvi",
+    "name": "Henry VI, part 3",
+    "title": "Henry VI, part 3",
+    "category": "history",
+    "actCount": 5,
+    "sceneCount": 28
+  },
+  {
+    "slug": "henryviii",
+    "name": "Henry VIII",
+    "title": "Henry VIII",
+    "category": "history",
+    "actCount": 5,
+    "sceneCount": 18
+  },
+  {
+    "slug": "julius_caesar",
+    "name": "Julius Caesar",
+    "title": "Julius Caesar",
+    "category": "tragedy",
+    "actCount": 5,
+    "sceneCount": 18
+  },
+  {
+    "slug": "john",
+    "name": "King John",
+    "title": "King John",
+    "category": "history",
+    "actCount": 5,
+    "sceneCount": 16
+  },
+  {
+    "slug": "lear",
+    "name": "King Lear",
+    "title": "King Lear",
+    "category": "tragedy",
+    "actCount": 5,
+    "sceneCount": 26
+  },
+  {
+    "slug": "lll",
+    "name": "Love's Labours Lost",
+    "title": "Love's Labours Lost",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 9
   },
   {
     "slug": "macbeth",
@@ -16,11 +152,147 @@
     "sceneCount": 28
   },
   {
+    "slug": "measure",
+    "name": "Measure for Measure",
+    "title": "Measure for Measure",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 17
+  },
+  {
+    "slug": "much_ado",
+    "name": "Much Ado About Nothing",
+    "title": "Much Ado About Nothing",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 17
+  },
+  {
+    "slug": "othello",
+    "name": "Othello",
+    "title": "Othello",
+    "category": "tragedy",
+    "actCount": 5,
+    "sceneCount": 15
+  },
+  {
+    "slug": "pericles",
+    "name": "Pericles, Prince of Tyre",
+    "title": "Pericles, Prince of Tyre",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 20
+  },
+  {
+    "slug": "richardii",
+    "name": "Richard II",
+    "title": "Richard II",
+    "category": "history",
+    "actCount": 5,
+    "sceneCount": 19
+  },
+  {
+    "slug": "richardiii",
+    "name": "Richard III",
+    "title": "Richard III",
+    "category": "history",
+    "actCount": 5,
+    "sceneCount": 25
+  },
+  {
     "slug": "romeo_juliet",
     "name": "Romeo and Juliet",
     "title": "Romeo and Juliet",
     "category": "tragedy",
     "actCount": 5,
     "sceneCount": 26
+  },
+  {
+    "slug": "taming_shrew",
+    "name": "Taming of the Shrew",
+    "title": "Taming of the Shrew",
+    "category": "comedy",
+    "actCount": 6,
+    "sceneCount": 14
+  },
+  {
+    "slug": "comedy_errors",
+    "name": "The Comedy of Errors",
+    "title": "The Comedy of Errors",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 11
+  },
+  {
+    "slug": "merchant",
+    "name": "The Merchant of Venice",
+    "title": "The Merchant of Venice",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 20
+  },
+  {
+    "slug": "merry_wives",
+    "name": "The Merry Wives of Windsor",
+    "title": "The Merry Wives of Windsor",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 23
+  },
+  {
+    "slug": "tempest",
+    "name": "The Tempest",
+    "title": "The Tempest",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 9
+  },
+  {
+    "slug": "timon",
+    "name": "Timon of Athens",
+    "title": "Timon of Athens",
+    "category": "tragedy",
+    "actCount": 5,
+    "sceneCount": 17
+  },
+  {
+    "slug": "titus",
+    "name": "Titus Andronicus",
+    "title": "Titus Andronicus",
+    "category": "tragedy",
+    "actCount": 5,
+    "sceneCount": 14
+  },
+  {
+    "slug": "troilus_cressida",
+    "name": "Troilus and Cressida",
+    "title": "Troilus and Cressida",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 24
+  },
+  {
+    "slug": "twelfth_night",
+    "name": "Twelfth Night",
+    "title": "Twelfth Night",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 18
+  },
+  {
+    "slug": "two_gentlemen",
+    "name": "Two Gentlemen of Verona",
+    "title": "Two Gentlemen of Verona",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 20
+  },
+  {
+    "slug": "winters_tale",
+    "name": "Winter's Tale",
+    "title": "Winter's Tale",
+    "category": "comedy",
+    "actCount": 5,
+    "sceneCount": 14
   }
 ]
