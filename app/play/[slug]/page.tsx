@@ -38,40 +38,45 @@ export default async function PlayPage({
     <div className="mx-auto max-w-3xl px-5 py-12">
       <Link
         href="/"
-        className="text-sm text-[var(--fg-soft)] transition hover:text-[var(--accent)]"
+        className="label text-xs uppercase tracking-[0.2em] text-[var(--fg-soft)] transition hover:text-[var(--accent)]"
       >
         ← All works
       </Link>
 
-      <header className="mt-6 mb-10">
-        <span className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+      <header className="mt-6 mb-12">
+        <span className="label text-xs uppercase tracking-[0.25em] text-[var(--accent)]">
           {play.category}
         </span>
-        <h1 className="reading mt-1 text-4xl font-bold text-[var(--fg)]">
+        <h1 className="display mt-2 text-4xl font-semibold leading-tight text-[var(--fg)] sm:text-5xl">
           {play.title}
         </h1>
-        <p className="mt-2 text-[var(--fg-soft)]">
-          {play.actCount} acts · {play.sceneCount} scenes
+        <p className="label mt-3 text-xs uppercase tracking-[0.18em] text-[var(--fg-soft)]">
+          {play.actCount} acts · {play.sceneCount} scenes · The programme
         </p>
       </header>
 
-      <div className="space-y-8">
+      <div className="space-y-10">
         {play.acts.map((act) => (
           <section key={act.act}>
-            <h2 className="reading mb-3 text-lg font-semibold text-[var(--fg-soft)]">
-              Act {roman(act.act)}
-            </h2>
+            <div className="mb-4 flex items-baseline gap-4">
+              <h2 className="label text-sm uppercase tracking-[0.25em] text-[var(--accent)]">
+                Act {roman(act.act)}
+              </h2>
+              <span className="h-px flex-1 bg-[var(--border)]" />
+            </div>
             <ul className="overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--bg-raised)]">
               {act.scenes.map((s) => (
                 <li key={s.scene}>
                   <Link
                     href={`/play/${play.slug}/${act.act}/${s.scene}`}
-                    className="flex items-baseline gap-3 border-b border-[var(--border)] px-4 py-3 transition last:border-0 hover:bg-[color-mix(in_srgb,var(--accent)_8%,transparent)]"
+                    className="group flex items-baseline gap-4 border-b border-[var(--border)] px-4 py-3.5 transition last:border-0 hover:bg-[color-mix(in_srgb,var(--accent)_8%,transparent)]"
                   >
-                    <span className="w-20 shrink-0 text-sm font-medium text-[var(--accent)]">
+                    <span className="label w-24 shrink-0 text-xs uppercase tracking-[0.15em] text-[var(--accent)]">
                       {s.isPrologue ? "Prologue" : `Scene ${roman(s.scene)}`}
                     </span>
-                    <span className="reading text-[var(--fg)]">{s.location}</span>
+                    <span className="reading text-[var(--fg)] transition group-hover:text-[var(--accent)]">
+                      {s.location}
+                    </span>
                   </Link>
                 </li>
               ))}

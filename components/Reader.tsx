@@ -37,12 +37,12 @@ export function Reader({
   return (
     <LanguageProvider>
       <VoiceProvider slug={playSlug}>
-        {/* Sticky toolbar */}
-        <div className="sticky top-[57px] z-20 border-b border-[var(--border)] bg-[color-mix(in_srgb,var(--bg)_85%,transparent)] backdrop-blur">
+        {/* Sticky toolbar, parked directly under the 56px (h-14) site header */}
+        <div className="sticky top-14 z-20 border-b border-[var(--border)] bg-[color-mix(in_srgb,var(--bg)_82%,transparent)] backdrop-blur">
           <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-2.5">
             <Link
               href={`/play/${playSlug}`}
-              className="reading truncate text-sm font-semibold text-[var(--fg)] hover:text-[var(--accent)]"
+              className="display truncate text-base font-medium text-[var(--fg)] transition hover:text-[var(--accent)]"
             >
               {playName}
             </Link>
@@ -50,10 +50,10 @@ export function Reader({
               <LanguageButton onOpen={() => setLangOpen(true)} />
               <button
                 onClick={() => setVoicesOpen(true)}
-                className="flex items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-raised)] px-3 py-1.5 text-sm text-[var(--fg-soft)] outline-none transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                className="label flex items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-raised)] px-3 py-1.5 text-sm uppercase leading-none tracking-[0.1em] text-[var(--fg-soft)] outline-none transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
               >
-                <span aria-hidden>🎭</span>
-                <span className="hidden sm:inline">Voices</span>
+                <span aria-hidden className="leading-none">🎭</span>
+                <span className="hidden leading-none sm:inline">Voices</span>
               </button>
             </div>
           </div>
@@ -67,19 +67,19 @@ export function Reader({
           onClose={() => setVoicesOpen(false)}
         />
 
-      <article className="mx-auto max-w-3xl px-5 py-10">
-        <header className="mb-8 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+      <article className="mx-auto max-w-3xl px-5 py-12">
+        <header className="mb-3 text-center">
+          <p className="label text-xs uppercase tracking-[0.3em] text-[var(--accent)]">
             Act {roman(act)}
             {scene.isPrologue ? "" : ` · Scene ${roman(scene.scene)}`}
           </p>
-          <h1 className="reading mt-2 text-2xl font-bold text-[var(--fg)]">
+          <h1 className="display mt-3 text-3xl font-semibold leading-tight text-[var(--fg)]">
             {scene.isPrologue ? "Prologue" : scene.location}
           </h1>
         </header>
 
-        <p className="mb-6 text-center text-xs text-[var(--fg-soft)]">
-          Hover a speech (or tap on mobile) to translate it or hear it aloud.
+        <p className="mb-10 text-center text-xs text-[var(--fg-soft)]">
+          Hover a speech to translate it — or press play to hear it performed.
         </p>
 
         <div>
@@ -89,7 +89,7 @@ export function Reader({
             ) : (
               <p
                 key={i}
-                className="reading my-5 text-center text-base italic text-[var(--fg-soft)]"
+                className="reading my-6 text-center text-base italic text-[var(--fg-soft)]"
               >
                 {block.text}
               </p>
@@ -97,12 +97,12 @@ export function Reader({
           )}
         </div>
 
-        {/* Prev / next */}
-        <nav className="mt-12 flex items-center justify-between gap-3 border-t border-[var(--border)] pt-6">
+        {/* Exeunt / enter */}
+        <nav className="mt-14 flex items-center justify-between gap-3 border-t border-[var(--border)] pt-6">
           {prev ? (
             <Link
               href={`/play/${playSlug}/${prev.act}/${prev.scene}`}
-              className="rounded-lg border border-[var(--border)] bg-[var(--bg-raised)] px-4 py-2 text-sm transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              className="label rounded-lg border border-[var(--border)] bg-[var(--bg-raised)] px-4 py-2 text-sm uppercase tracking-[0.1em] text-[var(--fg-soft)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
             >
               ← Previous
             </Link>
@@ -112,7 +112,7 @@ export function Reader({
           {next ? (
             <Link
               href={`/play/${playSlug}/${next.act}/${next.scene}`}
-              className="rounded-lg border border-[var(--border)] bg-[var(--bg-raised)] px-4 py-2 text-sm transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              className="label rounded-lg border border-[var(--border)] bg-[var(--bg-raised)] px-4 py-2 text-sm uppercase tracking-[0.1em] text-[var(--fg-soft)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
             >
               Next →
             </Link>

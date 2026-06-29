@@ -33,13 +33,13 @@ export function CharacterVoices({
         }`}
         aria-label="Character voices"
       >
-        <div className="flex items-center justify-between border-b border-[var(--border)] px-5 py-4">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-[var(--accent)]">
-            Character voices
+        <div className="flex items-center justify-between border-b border-[var(--border)] bg-[var(--curtain)] px-5 py-4">
+          <h2 className="label text-sm uppercase tracking-[0.2em] text-[var(--curtain-fg)]">
+            The cast
           </h2>
           <button
             onClick={onClose}
-            className="rounded-full px-2 text-lg text-[var(--fg-soft)] transition hover:text-[var(--accent)]"
+            className="rounded-full px-2 text-lg text-[var(--curtain-fg)] transition hover:text-[var(--brass)]"
             aria-label="Close"
           >
             ✕
@@ -47,7 +47,7 @@ export function CharacterVoices({
         </div>
 
         <p className="px-5 pt-3 text-xs text-[var(--fg-soft)]">
-          Pick a voice for each character. Choices are saved on this device.
+          Cast a voice for each character. Choices are saved on this device.
         </p>
 
         <div className="flex-1 overflow-y-auto px-5 py-3">
@@ -61,13 +61,20 @@ export function CharacterVoices({
                 return (
                   <li key={name}>
                     <label className="flex flex-col gap-1">
-                      <span className="reading text-sm font-medium text-[var(--fg)]">
+                      <span className="label text-sm uppercase tracking-[0.1em] text-[var(--fg)]">
                         {name}
                       </span>
                       <select
                         value={getVoice(name)}
                         onChange={(e) => setVoice(name, e.target.value)}
-                        className="reading rounded-lg border border-[var(--border)] bg-[var(--bg)] px-3 py-1.5 text-sm text-[var(--fg)] outline-none transition focus:border-[var(--accent)]"
+                        className="reading appearance-none rounded-lg border border-[var(--border)] bg-[var(--bg)] py-1.5 pl-3 pr-9 text-sm text-[var(--fg)] outline-none transition focus:border-[var(--accent)]"
+                        style={{
+                          backgroundImage:
+                            "url(\"data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='12'%20height='12'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23a87f2e'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%209l6%206%206-6'/%3E%3C/svg%3E\")",
+                          backgroundRepeat: "no-repeat",
+                          backgroundPosition: "right 0.75rem center",
+                          backgroundSize: "0.7rem",
+                        }}
                       >
                         {options.map((v) => (
                           <option key={v.id} value={v.id}>

@@ -23,8 +23,9 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      aria-label="Toggle dark mode"
-      className="rounded-full border border-[var(--border)] bg-[var(--bg-raised)] p-2 text-[var(--fg-soft)] transition hover:text-[var(--accent)]"
+      aria-label={mounted && dark ? "House lights up" : "House lights down"}
+      title={mounted && dark ? "House lights up" : "House lights down"}
+      className="rounded-full border border-[color-mix(in_srgb,var(--brass)_45%,transparent)] p-2 text-[var(--curtain-fg)] transition hover:border-[var(--brass)] hover:text-[var(--brass)]"
     >
       {mounted && dark ? <SunIcon /> : <MoonIcon />}
     </button>
