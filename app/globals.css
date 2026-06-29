@@ -14,17 +14,19 @@
   --font-script: var(--font-noto-deva), var(--font-noto-beng),
     var(--font-noto-taml), var(--font-spectral), Georgia, serif;
 
-  /* Stage-curtain oxblood, brass gilt, performance teal, bone page */
-  --color-curtain: #6b1f2a;
-  --color-curtain-deep: #4a141c;
-  --color-brass: #c9a14a;
-  --color-brass-deep: #a87f2e;
-  --color-teal: #1f6f78;
-  --color-bone: #faf6ee;
-  --color-bone-raised: #fffdf8;
-  --color-ink: #1a1410;
-  --color-ink-soft: #5c5043;
-  --color-rose: #b3325a;
+  /* Stage-curtain oxblood, brass gilt, performance teal, bone page.
+     Expressed in OKLCH so lightness steps are perceptually even and hue
+     stays put across the light/dark mappings below. */
+  --color-curtain: oklch(0.363 0.108 16);
+  --color-curtain-deep: oklch(0.283 0.082 15.4);
+  --color-brass: oklch(0.729 0.115 84.4);
+  --color-brass-deep: oklch(0.622 0.109 81);
+  --color-teal: oklch(0.499 0.075 206);
+  --color-bone: oklch(0.974 0.011 84.6);
+  --color-bone-raised: oklch(0.994 0.007 88.6);
+  --color-ink: oklch(0.197 0.013 55.5);
+  --color-ink-soft: oklch(0.439 0.026 69.3);
+  --color-rose: oklch(0.523 0.167 6.5);
 }
 
 /* House lights up (light) */
@@ -33,26 +35,45 @@
   --bg-raised: var(--color-bone-raised);
   --fg: var(--color-ink);
   --fg-soft: var(--color-ink-soft);
-  --border: #e7ddca;
+  --border: oklch(0.9 0.028 83.5);
   --accent: var(--color-brass-deep); /* brass for eyebrows, rules, hovers */
   --accent-2: var(--color-teal); /* the translated / spoken layer */
   --brass: var(--color-brass); /* bright brass on dark chrome */
   --curtain: var(--color-curtain);
-  --curtain-fg: #f4e7cf; /* warm bone text that sits on the curtain */
+  --curtain-fg: oklch(0.932 0.035 82.9); /* warm bone text that sits on the curtain */
+
+  /* Layered, transparent shadows — they read as depth on any surface,
+     where a hard border would read as a seam. Tinted toward the ink hue. */
+  --shadow-sm: 0 1px 2px -1px oklch(0.197 0.013 55.5 / 0.1),
+    0 1px 1px -1px oklch(0.197 0.013 55.5 / 0.06);
+  --shadow-md: 0 1px 2px -1px oklch(0.197 0.013 55.5 / 0.08),
+    0 4px 10px -3px oklch(0.197 0.013 55.5 / 0.1),
+    0 12px 28px -8px oklch(0.197 0.013 55.5 / 0.12);
+  --shadow-lg: 0 2px 4px -2px oklch(0.197 0.013 55.5 / 0.1),
+    0 12px 24px -8px oklch(0.197 0.013 55.5 / 0.14),
+    0 28px 56px -16px oklch(0.197 0.013 55.5 / 0.2);
+  /* Pure-black/white hairline for image & surface edges (skill rule). */
+  --edge: oklch(0 0 0 / 0.1);
 }
 
 /* House lights down (dark) — backstage */
 .dark {
-  --bg: #14110d;
-  --bg-raised: #1d1812;
-  --fg: #ece3d2;
-  --fg-soft: #b3a892;
-  --border: #3a2f22;
-  --accent: #d8b25e;
-  --accent-2: #45b3bd;
-  --brass: #d8b25e;
-  --curtain: #7e2531;
-  --curtain-fg: #f4e7cf;
+  --bg: oklch(0.18 0.009 75);
+  --bg-raised: oklch(0.213 0.014 72);
+  --fg: oklch(0.918 0.025 83.4);
+  --fg-soft: oklch(0.735 0.033 84.6);
+  --border: oklch(0.313 0.027 71.3);
+  --accent: oklch(0.78 0.112 85.3);
+  --accent-2: oklch(0.708 0.099 203.6);
+  --brass: oklch(0.78 0.112 85.3);
+  --curtain: oklch(0.406 0.122 16.8);
+  --curtain-fg: oklch(0.932 0.035 82.9);
+
+  /* Backstage is darker, so shadows lean fully black and a touch deeper. */
+  --shadow-sm: 0 1px 2px -1px oklch(0 0 0 / 0.4);
+  --shadow-md: 0 2px 6px -2px oklch(0 0 0 / 0.4), 0 12px 28px -8px oklch(0 0 0 / 0.5);
+  --shadow-lg: 0 4px 10px -4px oklch(0 0 0 / 0.5), 0 28px 56px -16px oklch(0 0 0 / 0.6);
+  --edge: oklch(1 0 0 / 0.1);
 }
 
 html {
@@ -64,6 +85,23 @@ body {
   color: var(--fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings balance, body copy avoids orphans. */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+
+/* Dynamic counts (acts · scenes) shouldn't reflow as digits change. */
+.tnum {
+  font-variant-numeric: tabular-nums;
 }
 
 /* The stage: a soft warm wash from above, like a curtain pelmet under lights. */
@@ -116,6 +154,25 @@ body {
   animation: fade-up 0.35s ease-out both;
 }
 
+/* Split-and-stagger entrance. Containers tag children with .enter and a
+   --enter-i index; each chunk lifts in ~90ms after the one before it.
+   The easing settles without overshoot (bounce 0). */
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.enter {
+  animation: enter 0.5s cubic-bezier(0.2, 0, 0, 1) both;
+  animation-delay: calc(var(--enter-i, 0) * 90ms);
+}
+
 /* "Now performing" indicator pulse. */
 @keyframes nowplaying {
   0%,
@@ -140,7 +197,16 @@ select:focus-visible,
 [tabindex]:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
-  border-radius: 3px;
+  border-radius: 4px;
+}
+
+/* Tactile press feedback for anything interactive that opts in. 0.96 is the
+   smallest scale that still reads as a press without feeling exaggerated.
+   This only sets the target — each .press element lists `scale` in its own
+   transition utility so the easing/duration travels with the element and we
+   never clobber its colour/shadow transitions with a `transition` shorthand. */
+.press:active {
+  scale: 0.96;
 }
 
 @media (prefers-reduced-motion: reduce) {

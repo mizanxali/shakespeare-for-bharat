@@ -50,7 +50,7 @@ export function Reader({
               <LanguageButton onOpen={() => setLangOpen(true)} />
               <button
                 onClick={() => setVoicesOpen(true)}
-                className="label flex items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-raised)] px-3 py-1.5 text-sm uppercase leading-none tracking-[0.1em] text-[var(--fg-soft)] outline-none transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                className="label press flex min-h-[2.25rem] items-center gap-1.5 rounded-xl bg-[var(--bg-raised)] px-3 py-1.5 text-sm uppercase leading-none tracking-[0.1em] text-[var(--fg-soft)] shadow-[var(--shadow-sm)] outline-none ring-1 ring-[var(--border)] transition-[color,box-shadow,scale] duration-200 hover:text-[var(--accent)] hover:ring-[var(--accent)]"
               >
                 <span aria-hidden className="leading-none">🎭</span>
                 <span className="hidden leading-none sm:inline">Voices</span>
@@ -69,16 +69,25 @@ export function Reader({
 
       <article className="mx-auto max-w-3xl px-5 py-12">
         <header className="mb-3 text-center">
-          <p className="label text-xs uppercase tracking-[0.3em] text-[var(--accent)]">
+          <p
+            className="enter label tnum text-xs uppercase tracking-[0.3em] text-[var(--accent)]"
+            style={{ "--enter-i": 0 } as React.CSSProperties}
+          >
             Act {roman(act)}
             {scene.isPrologue ? "" : ` · Scene ${roman(scene.scene)}`}
           </p>
-          <h1 className="display mt-3 text-3xl font-semibold leading-tight text-[var(--fg)]">
+          <h1
+            className="enter display mt-3 text-3xl font-semibold leading-tight text-[var(--fg)]"
+            style={{ "--enter-i": 1 } as React.CSSProperties}
+          >
             {scene.isPrologue ? "Prologue" : scene.location}
           </h1>
         </header>
 
-        <p className="mb-10 text-center text-xs text-[var(--fg-soft)]">
+        <p
+          className="enter mb-10 text-center text-xs text-[var(--fg-soft)]"
+          style={{ "--enter-i": 2 } as React.CSSProperties}
+        >
           Hover a speech to translate it — or press play to hear it performed.
         </p>
 
@@ -102,7 +111,7 @@ export function Reader({
           {prev ? (
             <Link
               href={`/play/${playSlug}/${prev.act}/${prev.scene}`}
-              className="label rounded-lg border border-[var(--border)] bg-[var(--bg-raised)] px-4 py-2 text-sm uppercase tracking-[0.1em] text-[var(--fg-soft)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              className="label press rounded-xl bg-[var(--bg-raised)] px-4 py-2 text-sm uppercase tracking-[0.1em] text-[var(--fg-soft)] shadow-[var(--shadow-sm)] ring-1 ring-[var(--border)] transition-[color,box-shadow,scale] duration-200 hover:text-[var(--accent)] hover:ring-[var(--accent)]"
             >
               ← Previous
             </Link>
@@ -112,7 +121,7 @@ export function Reader({
           {next ? (
             <Link
               href={`/play/${playSlug}/${next.act}/${next.scene}`}
-              className="label rounded-lg border border-[var(--border)] bg-[var(--bg-raised)] px-4 py-2 text-sm uppercase tracking-[0.1em] text-[var(--fg-soft)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              className="label press rounded-xl bg-[var(--bg-raised)] px-4 py-2 text-sm uppercase tracking-[0.1em] text-[var(--fg-soft)] shadow-[var(--shadow-sm)] ring-1 ring-[var(--border)] transition-[color,box-shadow,scale] duration-200 hover:text-[var(--accent)] hover:ring-[var(--accent)]"
             >
               Next →
             </Link>

@@ -12,7 +12,7 @@ export function PlayCard({ play }: { play: PlaySummary }) {
   return (
     <Link
       href={`/play/${play.slug}`}
-      className="group flex flex-col rounded-xl border border-[var(--border)] bg-[var(--bg-raised)] p-5 transition hover:border-[var(--accent)]"
+      className="group press flex flex-col rounded-2xl bg-[var(--bg-raised)] p-5 shadow-[var(--shadow-sm)] ring-1 ring-[var(--edge)] transition-[box-shadow,translate,scale] duration-300 ease-[cubic-bezier(0.2,0,0,1)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
     >
       <span
         className={`label text-xs uppercase tracking-[0.22em] ${
@@ -26,7 +26,7 @@ export function PlayCard({ play }: { play: PlaySummary }) {
       </h3>
       {/* The curtain line rises on hover. */}
       <span className="mt-3 h-px w-10 origin-left scale-x-0 bg-[var(--accent)] transition-transform duration-300 group-hover:scale-x-100" />
-      <p className="label mt-3 text-xs uppercase tracking-[0.15em] text-[var(--fg-soft)]">
+      <p className="label tnum mt-3 text-xs uppercase tracking-[0.15em] text-[var(--fg-soft)]">
         {play.actCount} acts · {play.sceneCount} scenes
       </p>
     </Link>

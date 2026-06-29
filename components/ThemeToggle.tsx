@@ -20,14 +20,39 @@ export function ThemeToggle() {
     } catch {}
   };
 
+  const isDark = mounted && dark;
+
   return (
     <button
       onClick={toggle}
-      aria-label={mounted && dark ? "House lights up" : "House lights down"}
-      title={mounted && dark ? "House lights up" : "House lights down"}
-      className="rounded-full border border-[color-mix(in_srgb,var(--brass)_45%,transparent)] p-2 text-[var(--curtain-fg)] transition hover:border-[var(--brass)] hover:text-[var(--brass)]"
+      aria-label={isDark ? "House lights up" : "House lights down"}
+      title={isDark ? "House lights up" : "House lights down"}
+      className="press relative grid h-10 w-10 place-items-center rounded-full border border-[color-mix(in_srgb,var(--brass)_45%,transparent)] text-[var(--curtain-fg)] transition-[color,border-color,scale] duration-200 hover:border-[var(--brass)] hover:text-[var(--brass)]"
     >
-      {mounted && dark ? <SunIcon /> : <MoonIcon />}
+      {/* Both icons stay mounted and cross-fade — opacity + scale + blur,
+          no layout swap. The hidden one shrinks to 0.25 and blurs out. */}
+      <span
+        className="absolute transition-[opacity,scale,filter] duration-300 ease-[cubic-bezier(0.2,0,0,1)]"
+        style={{
+          opacity: isDark ? 1 : 0,
+          scale: isDark ? "1" : "0.25",
+          filter: isDark ? "blur(0)" : "blur(4px)",
+        }}
+        aria-hidden
+      >
+        <SunIcon />
+      </span>
+      <span
+        className="absolute transition-[opacity,scale,filter] duration-300 ease-[cubic-bezier(0.2,0,0,1)]"
+        style={{
+          opacity: isDark ? 0 : 1,
+          scale: isDark ? "0.25" : "1",
+          filter: isDark ? "blur(4px)" : "blur(0)",
+        }}
+        aria-hidden
+      >
+        <MoonIcon />
+      </span>
     </button>
   );
 }

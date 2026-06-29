@@ -38,7 +38,7 @@ export default async function PlayPage({
     <div className="mx-auto max-w-3xl px-5 py-12">
       <Link
         href="/"
-        className="label text-xs uppercase tracking-[0.2em] text-[var(--fg-soft)] transition hover:text-[var(--accent)]"
+        className="label inline-block text-xs uppercase tracking-[0.2em] text-[var(--fg-soft)] transition-colors duration-200 hover:text-[var(--accent)]"
       >
         ← All works
       </Link>
@@ -50,7 +50,7 @@ export default async function PlayPage({
         <h1 className="display mt-2 text-4xl font-semibold leading-tight text-[var(--fg)] sm:text-5xl">
           {play.title}
         </h1>
-        <p className="label mt-3 text-xs uppercase tracking-[0.18em] text-[var(--fg-soft)]">
+        <p className="label tnum mt-3 text-xs uppercase tracking-[0.18em] text-[var(--fg-soft)]">
           {play.actCount} acts · {play.sceneCount} scenes · The programme
         </p>
       </header>
@@ -64,12 +64,12 @@ export default async function PlayPage({
               </h2>
               <span className="h-px flex-1 bg-[var(--border)]" />
             </div>
-            <ul className="overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--bg-raised)]">
+            <ul className="overflow-hidden rounded-2xl bg-[var(--bg-raised)] shadow-[var(--shadow-sm)] ring-1 ring-[var(--edge)]">
               {act.scenes.map((s) => (
                 <li key={s.scene}>
                   <Link
                     href={`/play/${play.slug}/${act.act}/${s.scene}`}
-                    className="group flex items-baseline gap-4 border-b border-[var(--border)] px-4 py-3.5 transition last:border-0 hover:bg-[color-mix(in_srgb,var(--accent)_8%,transparent)]"
+                    className="group flex items-baseline gap-4 border-b border-[var(--border)] px-4 py-3.5 transition-colors duration-200 last:border-0 hover:bg-[color-mix(in_srgb,var(--accent)_8%,transparent)]"
                   >
                     <span className="label w-24 shrink-0 text-xs uppercase tracking-[0.15em] text-[var(--accent)]">
                       {s.isPrologue ? "Prologue" : `Scene ${roman(s.scene)}`}

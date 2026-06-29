@@ -28,7 +28,7 @@ export function CharacterVoices({
 
       {/* Drawer */}
       <aside
-        className={`fixed right-0 top-0 z-40 flex h-full w-80 max-w-[85vw] flex-col border-l border-[var(--border)] bg-[var(--bg-raised)] shadow-xl transition-transform duration-300 ${
+        className={`fixed right-0 top-0 z-40 flex h-full w-80 max-w-[85vw] flex-col border-l border-[var(--border)] bg-[var(--bg-raised)] shadow-[var(--shadow-lg)] transition-transform duration-300 ease-[cubic-bezier(0.2,0,0,1)] ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
         aria-label="Character voices"
@@ -39,7 +39,7 @@ export function CharacterVoices({
           </h2>
           <button
             onClick={onClose}
-            className="rounded-full px-2 text-lg text-[var(--curtain-fg)] transition hover:text-[var(--brass)]"
+            className="press grid h-9 w-9 place-items-center rounded-full text-lg text-[var(--curtain-fg)] transition-[color,scale] duration-200 hover:text-[var(--brass)]"
             aria-label="Close"
           >
             ✕
@@ -67,7 +67,7 @@ export function CharacterVoices({
                       <select
                         value={getVoice(name)}
                         onChange={(e) => setVoice(name, e.target.value)}
-                        className="reading appearance-none rounded-lg border border-[var(--border)] bg-[var(--bg)] py-1.5 pl-3 pr-9 text-sm text-[var(--fg)] outline-none transition focus:border-[var(--accent)]"
+                        className="reading appearance-none rounded-lg border border-[var(--border)] bg-[var(--bg)] py-1.5 pl-3 pr-9 text-sm text-[var(--fg)] outline-none transition-[border-color] duration-200 focus:border-[var(--accent)]"
                         style={{
                           backgroundImage:
                             "url(\"data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='12'%20height='12'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23a87f2e'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%209l6%206%206-6'/%3E%3C/svg%3E\")",

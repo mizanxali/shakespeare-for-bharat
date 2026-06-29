@@ -217,10 +217,10 @@ function Btn({
     <button
       onClick={onClick}
       disabled={loading}
-      className={`label rounded-full border px-3 py-1 text-xs uppercase tracking-[0.08em] transition disabled:opacity-60 ${
+      className={`label press inline-flex min-h-[1.9rem] items-center rounded-full px-3 py-1 text-xs uppercase tracking-[0.08em] transition-[color,background-color,border-color,box-shadow,scale] duration-200 disabled:opacity-60 ${
         active
-          ? "border-[var(--curtain)] bg-[var(--curtain)] text-[var(--curtain-fg)]"
-          : "border-[var(--border)] bg-[var(--bg-raised)] text-[var(--fg-soft)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
+          ? "bg-[var(--curtain)] text-[var(--curtain-fg)] shadow-[var(--shadow-sm)] ring-1 ring-[color-mix(in_srgb,var(--curtain)_70%,black)]"
+          : "bg-[var(--bg-raised)] text-[var(--fg-soft)] ring-1 ring-[var(--border)] hover:text-[var(--accent)] hover:ring-[var(--accent)]"
       }`}
     >
       {loading ? "…" : children}

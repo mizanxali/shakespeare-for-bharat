@@ -96,7 +96,7 @@ export default function RootLayout({
             &amp; performance by{" "}
             <a
               href="https://www.sarvam.ai"
-              className="text-[var(--accent)] underline decoration-dotted underline-offset-4 transition hover:text-[var(--accent-2)]"
+              className="text-[var(--accent)] underline decoration-dotted underline-offset-4 transition-colors duration-200 hover:text-[var(--accent-2)]"
               target="_blank"
               rel="noreferrer"
             >

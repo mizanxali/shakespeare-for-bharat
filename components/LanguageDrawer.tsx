@@ -11,7 +11,7 @@ export function LanguageButton({ onOpen }: { onOpen: () => void }) {
   return (
     <button
       onClick={onOpen}
-      className="flex items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-raised)] px-3 py-1.5 text-sm text-[var(--fg-soft)] outline-none transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+      className="press flex min-h-[2.25rem] items-center gap-1.5 rounded-xl bg-[var(--bg-raised)] px-3 py-1.5 text-sm text-[var(--fg-soft)] shadow-[var(--shadow-sm)] outline-none ring-1 ring-[var(--border)] transition-[color,box-shadow,scale] duration-200 hover:text-[var(--accent)] hover:ring-[var(--accent)]"
     >
       <span aria-hidden className="leading-none">🌐</span>
       {/* Devanagari/Bengali metrics reserve extra top ascent, so the glyphs
@@ -45,7 +45,7 @@ export function LanguageDrawer({
 
       {/* Drawer */}
       <aside
-        className={`fixed right-0 top-0 z-40 flex h-full w-80 max-w-[85vw] flex-col border-l border-[var(--border)] bg-[var(--bg-raised)] shadow-xl transition-transform duration-300 ${
+        className={`fixed right-0 top-0 z-40 flex h-full w-80 max-w-[85vw] flex-col border-l border-[var(--border)] bg-[var(--bg-raised)] shadow-[var(--shadow-lg)] transition-transform duration-300 ease-[cubic-bezier(0.2,0,0,1)] ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
         aria-label="Translation language"
@@ -56,7 +56,7 @@ export function LanguageDrawer({
           </h2>
           <button
             onClick={onClose}
-            className="rounded-full px-2 text-lg text-[var(--curtain-fg)] transition hover:text-[var(--brass)]"
+            className="press grid h-9 w-9 place-items-center rounded-full text-lg text-[var(--curtain-fg)] transition-[color,scale] duration-200 hover:text-[var(--brass)]"
             aria-label="Close"
           >
             ✕
@@ -79,7 +79,7 @@ export function LanguageDrawer({
                       setLanguage(l.code);
                       onClose();
                     }}
-                    className={`flex w-full items-center justify-between gap-2 rounded-lg border px-3 py-2 text-left text-sm transition ${
+                    className={`press flex w-full items-center justify-between gap-2 rounded-lg border px-3 py-2 text-left text-sm transition-[color,background-color,border-color,scale] duration-150 ${
                       active
                         ? "border-[var(--accent)] bg-[color-mix(in_srgb,var(--accent)_14%,transparent)] font-medium text-[var(--fg)]"
                         : "border-transparent text-[var(--fg)] hover:border-[var(--border)] hover:bg-[var(--bg)]"
